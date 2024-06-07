@@ -69,9 +69,9 @@ def send_email(message):
     msg['Subject'] = "Task Reminder"
     msg.attach(MIMEText(message, 'plain'))
 
-    server = smtplib.SMTP() #enter params
+    server = smtplib.SMTP("helixr-com.mail.protection.outlook.com", 25)
     server.starttls()
-    server.login(sender, "emailer2!") #sender email and password
+    server.login(sender, "emailer2!")
     text = msg.as_string()
     for recipient in recipients:
         server.sendmail(sender, recipient, text)
