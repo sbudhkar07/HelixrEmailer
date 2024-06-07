@@ -4,12 +4,11 @@ from email.mime.multipart import MIMEMultipart
 import sqlite3
 from datetime import datetime, timedelta
 
-
-recipients = ["Aakriti.Razdan@helixr.com", "Phani.Sabnivisu@helixr.com"] 
+recipients = ["Aakriti.Razdan@helixr.com", "Phani.Sabnivisu@helixr.com"]
 sender = "Seyaan.Budhkar@helixr.com"
 
 def get_tasks(country, month, day):
-    conn = sqlite3.connect("final_database.db")
+    conn = sqlite3.connect("database/final_database.db")
     cursor = conn.cursor()
     
     cursor.execute(f'''
@@ -95,3 +94,4 @@ task_list4 = len(get_tasks("fi", month, day))
 if (task_list1 + task_list2 + task_list3 + task_list4) > 0:
     message = create_message()
     send_email(message)    
+    
