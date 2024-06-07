@@ -19,9 +19,12 @@ def get_tasks(country, month, day):
     and Month = {month}
     and Day = {day}
     ''')
+
+    tasks = cursor.fetchall()
+
     conn.close()
 
-    return cursor.fetchall()
+    return tasks
 
 
 def create_message():
@@ -71,7 +74,7 @@ def send_email(message):
 
     server = smtplib.SMTP("helixr-com.mail.protection.outlook.com", 25)
     server.starttls()
-    server.login(sender, "emailer2!")
+
     text = msg.as_string()
     for recipient in recipients:
         server.sendmail(sender, recipient, text)
