@@ -3,6 +3,7 @@ name: Send Daily Email
 on:
   schedule:
     - cron: '0 8 * * *' # Every day at 8 AM UTC
+  workflow_dispatch:
 
 jobs:
   send-email:
