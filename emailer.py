@@ -76,22 +76,21 @@ def send_email(message):
 
     text = msg.as_string()
     for recipient in recipients:
+        msg['To'] = recipient
         server.sendmail(sender, recipient, text)
     server.quit()
 
-    for recipient in recipients:
-        msg['To'] = recipient
+if __name__ == '__main__':
+    advance_date = datetime.now() + timedelta(days=3)
+    month = advance_date.month
+    day = advance_date.day
 
-advance_date = datetime.now() + timedelta(days=3)
-month = advance_date.month
-day = advance_date.day
+    task_list1 = len(get_tasks("uk", month, day))
+    task_list2 = len(get_tasks("ir", month, day))
+    task_list3 = len(get_tasks("in", month, day))
+    task_list4 = len(get_tasks("fi", month, day))
 
-task_list1 = len(get_tasks("uk", month, day))
-task_list2 = len(get_tasks("ir", month, day))
-task_list3 = len(get_tasks("in", month, day))
-task_list4 = len(get_tasks("fi", month, day))
-
-if (task_list1 + task_list2 + task_list3 + task_list4) > 0:
-    message = create_message()
-    send_email(message)    
+    if (task_list1 + task_list2 + task_list3 + task_list4) > 0:
+        message = create_message()
+        send_email(message)    
     
