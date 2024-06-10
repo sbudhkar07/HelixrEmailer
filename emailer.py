@@ -37,7 +37,7 @@ def create_message():
     in_tasks = get_tasks("in", month, day)
     fi_tasks = get_tasks("fi", month, day)
     
-    message = "Hi, \n\nThis is a reminder that the following tasks are due in 2 days:\n\n"
+    message = "Hi, \n\nThis is a reminder that the following tasks are due in 3 days:\n\n"
         
     if len(uk_tasks) > 0:
         message += "UK: \n"
